@@ -1,0 +1,238 @@
+READ ME
+
+1. Register your user 
+	url     : http://localhost:14101/api/auth/register
+	method  : POST
+	header  : 
+        content-type    :application/x-www-form-urlencoded
+	input   :
+		idname
+		password
+	output  :
+		respCode *look below for list of respCode
+        message
+    
+2. Login using your registered user
+    url     : http://localhost:14101/api/auth/login
+	method  : POST
+	header  : 
+        content-type    :application/x-www-form-urlencoded
+	input 	:
+		idname
+		password
+	output 	:
+		respCode   
+        token   *will be used for other rest api
+
+3. Test validate token
+    URL     : http://localhost:14101/api/auth/validate
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : GET
+    input   : none
+    output  :
+        respCode
+        data
+
+4. Find all user
+    URL     : http://localhost:14102/api/users/findAllUser
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : none
+    output  :
+        respCode
+        data
+
+5. Find user by userName
+    URL     : http://localhost:14102/api/users/findUserByUserName
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+    output  :
+        respCode
+        data
+
+6. Find user by accountNumber
+    URL     : http://localhost:14102/api/users/findUserByAccNo
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        accountNumber
+    output  :
+        respCode
+        data
+
+
+7. Find user by idNumber
+    URL     : http://localhost:14102/api/users/findUserByIdNo
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        idNumber
+    output  :
+        respCode
+        data
+
+
+8. Find user by accountNumber and IdNumber
+    URL     : http://localhost:14102/api/users/findUserByAccAndIdNo
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        accountNumber
+        idNumber
+    output  :
+        respCode
+        data
+
+
+9. Add User
+    URL     : http://localhost:14102/api/users/addUser
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+        accountNumber
+        idNumber
+        emailAddress
+    output  :
+        respCode
+        message
+
+10. Edit User
+    URL     : http://localhost:14102/api/users/editUser
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+    output  :
+        respCode
+        message
+
+11. Remove User
+    URL     : http://localhost:14102/api/users/removeUser
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+    output  :
+        respCode
+        message
+
+12. Find all vehicle
+    URL     : http://localhost:14103/api/vehicle/findAll
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : none
+    output  :
+        respCode
+        data
+
+13. Find vehicle by user
+    URL     : http://localhost:14103/api/vehicle/findVhcByUser
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+    output  :
+        respCode
+        data
+
+14. Find vehicle by user dan vehicle type
+    URL     : http://localhost:14103/api/vehicle/findVhcByUserAndType
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+        vehicleType
+    output  :
+        respCode
+        data
+
+15. Add Vehicle
+    URL     : http://localhost:14103/api/vehicle/addVehicle
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+        vehicleType
+        vehicleId
+    output  :
+        respCode
+        message
+
+16. Edit Vehicle
+    URL     : http://localhost:14103/api/vehicle/editVehicle
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+        vehicleType
+        vehicleId
+    output  :
+        respCode
+        message
+
+17. Remove Vehicle by Username
+    URL     : http://localhost:14103/api/vehicle/removeVehicleByUser
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+        vehicleType
+        vehicleId
+    output  :
+        respCode
+        message
+
+18. Remove Vehicle by Username and Vehicle Type
+    URL     : http://localhost:14103/api/vehicle/removeVehicle
+    header  : 
+            content-type    :application/x-www-form-urlencoded
+            x-access-token  : token *from point 2
+    method  : POST
+    input   : 
+        userName
+        vehicleType
+        vehicleId
+    output  :
+        respCode
+        message
+        
+respCode list
+0   : success
+1   : error authentication
+3   : no token provided
+4   : token not valid
+5   : error validation
+99  : internal server error
