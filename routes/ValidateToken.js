@@ -7,7 +7,7 @@ function validateToken(req, res,next) {
         return res.status(401).send({ respCode: '3' ,message: 'No token provided.' });
     }
     request( {
-        url: 'http://localhost:14101/api/auth/validate',
+        url: 'http://token-api-stefanie:14101/api/auth/validate',
         method: 'GET',
         headers : { "x-access-token" : token }
     },

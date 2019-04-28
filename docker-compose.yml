@@ -1,0 +1,33 @@
+version: "3.5"
+networks:
+  mynetwork:
+    external:
+      name: token-api-stefanie_mynetwork
+services:
+  app:
+    container_name: vehicle-api-stefanie
+    restart: always
+    build: .
+    ports:
+      - "14103:14103"
+    volumes:
+      - .:/app
+    links:
+      - mongo
+      - redisntw
+    networks:
+      - mynetwork
+  mongo:
+    container_name: stefanie-vehicle-mongo
+    image: mongo
+    ports:
+      - "27019:27019"
+    networks:
+      - mynetwork
+  redisntw:
+    container_name: stefanie-redis
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - mynetwork
